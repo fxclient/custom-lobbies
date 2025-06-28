@@ -19,9 +19,8 @@ jobs:
       - name: Deploy to current repo's gh-pages
         run: |
           cd external-gh-pages
-          git init
-          git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
-          git checkout -b gh-pages
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+          git checkout -B gh-pages
           git add .
-          git commit -m "Deploy from external gh-pages"
+          git commit -m "Deploy from external gh-pages" || echo "No changes to commit"
           git push --force origin gh-pages
