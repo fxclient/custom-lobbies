@@ -8378,8 +8378,8 @@ function aL7() {
 function aKp() {
 	var aNy, aNz, aN6, qR, aO0;
 	this.aEw = new s1, aN6 = new qF([.45, .27], [.5, .5], 2 / 3), aNz = [new v("⚔️<br>" + L(294), function() {
-			aO1(0)
-		}, b9.nC), new v("🗡️<br>" + L(278), function() {
+			alert("This version is for use with custom lobbies only. For normal multiplayer, use the version at https://fxclient.github.io/FXclient/")
+		}, "rgba(50, 50, 50, 0.5)"), new v("🗡️<br>" + L(278), function() {
 			aO1(1)
 		}, b9.nU), new v("🔑<br>" + L(295), function() {
 			aO1(2)
