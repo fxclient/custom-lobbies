@@ -1,0 +1,27 @@
+name: Deploy External gh-pages to Current Repo
+
+on:
+  workflow_dispatch: # manually triggered
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout this repository (for metadata)
+        uses: actions/checkout@v4
+
+      - name: Clone external gh-pages branch
+        run: |
+          git clone --branch gh-pages https://github.com/fxclient/FXClient.git external-gh-pages
+          ls -la external-gh-pages
+
+      - name: Deploy to current repo's gh-pages
+        run: |
+          cd external-gh-pages
+          git init
+          git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+          git checkout -b gh-pages
+          git add .
+          git commit -m "Deploy from external gh-pages"
+          git push --force origin gh-pages
